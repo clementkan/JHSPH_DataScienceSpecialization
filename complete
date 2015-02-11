@@ -1,0 +1,14 @@
+complete <- function(directory, id = 1:332){
+        files_list <- list.files(directory, full.names = TRUE)
+        dat <- data.frame()
+        for(i in id){
+                dat <- rbind(dat,read.csv(files_list[i]))
+        }
+        good <- complete.cases(dat)
+        good_subset <- dat[good,][,"ID"]
+        x <- as.data.frame(table(good_subset))
+        colnames(x)<-c("id","nobs")
+        target <- id
+        y <- x[match(target,x$id),]
+        print(y)
+}
