@@ -1,4 +1,21 @@
-Version 1:
+Solution 1 of 3:
+complete <- function(directory, id = 1:332) {
+        files<-list.files(directory,full.names=T)
+        
+        dat<-data.frame()
+        for (i in id){
+                x<-read.csv(files[i])
+                good<-complete.cases(x)
+                y<-nrow(x[good,])
+                z<-cbind(i,y)
+                
+                dat<-rbind(dat, z)
+        }
+        names(dat)<-c("id",'nobs')
+        print(dat)
+}
+
+Solution 2 of 3:
 complete <- function(directory, id = 1:332){
         files_list <- list.files(directory, full.names = TRUE)
         dat <- data.frame()
@@ -14,7 +31,7 @@ complete <- function(directory, id = 1:332){
         print(y)
 }
 
-Version 2:
+Solution 3 of 3:
 complete <- function(directory, id = 1:332){
         files_list <- list.files(directory, full.names = TRUE)
         files_read <- data.frame()
