@@ -1,19 +1,20 @@
 Solution 1 of 3:
-complete <- function(directory, id = 1:332) {
-        files<-list.files(directory,full.names=T)
+complete <- function(directory, id= 1:332){
+        files<-list.files(directory, full.names=TRUE)
         
-        dat<-data.frame()
+        data<-data.frame()
         
-        for (i in id){
+        for(i in id){
                 x<-read.csv(files[i])
                 good<-complete.cases(x)
-                y<-nrow(x[good,])
-                z<-cbind(i,y)
-                dat<-rbind(dat, z)
+                y<-x[good,]
+                z<-nrow(y)
+                obs<-cbind(i, z)
+                data<-rbind(data, obs)
         }
         
-        names(dat)<-c("id",'nobs')
-        return(dat)
+        names(data)<-c("id","nobs")
+        return(data)
 }
 
 Solution 2 of 3:
