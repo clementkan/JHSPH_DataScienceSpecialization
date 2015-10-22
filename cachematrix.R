@@ -42,7 +42,7 @@ makeCacheMatrix <- function(x = matrix()){
 ## the matrix has not changed).If so, it gets the inverse from 
 ## the cache and skips the computation. Otherwise, it calculates
 ## the inverse of the data and sets the value of the inverse in 
-## the cache via the setcache function.
+## the cache via the setinverse function.
 
 ## Computing the inverse of a square matrix is done using
 ## the solve function in R.
