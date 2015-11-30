@@ -1,3 +1,6 @@
+Test to check the script:
+source("http://d396qusza40orc.cloudfront.net/rprog%2Fscripts%2Fsubmitscript3.R")
+
 Solution 1 of 2:
 best <- function(state, outcome){
         
@@ -40,7 +43,7 @@ best <- function(state, outcome){
 
 Solution 2 of 2:
 best <- function(state, outcome) {
-        full_data <- read.csv("outcome-of-care-measures.csv", colClasses="character")
+        readfile <- read.csv("outcome-of-care-measures.csv", colClasses="character")
         
         column <- if (outcome == "heart attack") {
                 "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack"
@@ -52,14 +55,15 @@ best <- function(state, outcome) {
                 stop("invalid outcome")
         }
         
-        data_for_state <- full_data[full_data$State == state, c("Hospital.Name", column)]
+        data <- readfile[readfile$State == state, c("Hospital.Name", column)]
         
-        if (nrow(data_for_state) == 0) {
+        if (nrow(data) == 0) {
                 stop("invalid state")        
         }
         
-        data_for_state[,2] <- as.numeric(data_for_state[,2])	
-        ordered_data_for_state <- order(data_for_state[column], data_for_state$Hospital.Name)
+        data[,2] <- as.numeric(data[,2])
         
-        as.character(data_for_state$Hospital.Name[ordered_data_for_state[1]])
+        ordered_data <- order(data[column], data$Hospital.Name)
+        
+        as.character(data$Hospital.Name[ordered_data[1]])
 }
