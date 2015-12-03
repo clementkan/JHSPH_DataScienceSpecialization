@@ -1,4 +1,4 @@
-Test to check the script:
+Script test:
 source("http://d396qusza40orc.cloudfront.net/rprog%2Fscripts%2Fsubmitscript3.R")
 
 Solution 1 of 2:
