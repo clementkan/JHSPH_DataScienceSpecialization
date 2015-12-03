@@ -1,8 +1,7 @@
 R Programming - Assignment 3
 Question 2: Finding the best hospital in a state
 
-Script test:
-source("http://d396qusza40orc.cloudfront.net/rprog%2Fscripts%2Fsubmitscript3.R")
+Script test: source("http://d396qusza40orc.cloudfront.net/rprog%2Fscripts%2Fsubmitscript3.R")
 
 Solution 1 of 2:
 best <- function(state, outcome){
