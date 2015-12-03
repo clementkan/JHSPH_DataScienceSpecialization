@@ -1,7 +1,7 @@
-R Programming - Assignment 3
-Question 3: Ranking hospitals by outcome in a state
+## R Programming - Assignment 3
+## Question 3: Ranking hospitals by outcome in a state
 
-Script test: source("http://d396qusza40orc.cloudfront.net/rprog%2Fscripts%2Fsubmitscript3.R")
+## Script test: source("http://d396qusza40orc.cloudfront.net/rprog%2Fscripts%2Fsubmitscript3.R")
 
 rankhospital <- function(state, outcome, num = "best"){
         readfile <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
