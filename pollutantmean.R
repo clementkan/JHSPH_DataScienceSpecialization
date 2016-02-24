@@ -5,11 +5,9 @@ pollutantmean <- function(directory, pollutant, id = 1:332){
         files <- list.files(directory, full.names = TRUE)
         
         tmp <- vector(mode = "list", length = length(id))
-        
         for(i in id){
                 tmp[[i]] <- read.csv(files[[i]])
         }
-        
         data <- do.call(rbind, tmp) ## do.call() to combine tmp into a single data frame.
         
         mean(data[,pollutant], na.rm=TRUE)
