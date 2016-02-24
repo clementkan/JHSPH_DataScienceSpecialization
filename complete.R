@@ -14,6 +14,7 @@ complete <- function(directory, id = 1:332){
         return(data)
 }
 ## Solution 2 of 3:
+## Works, but not a good solution.
 complete <- function(directory, id = 1:332){
         files <- list.files(directory, full.names = TRUE)
         
