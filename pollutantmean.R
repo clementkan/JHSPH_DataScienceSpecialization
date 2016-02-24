@@ -16,7 +16,7 @@ pollutantmean <- function(directory, pollutant, id = 1:332){
 }
 
 ## Solution 2 of 2:
-## Slower as compare to solution 1, the data frame is constantly being recopy at each loop. 
+## Slower as compare to solution 1, the data frame is recopy at each loop. 
 pollutantmean <- function(directory, pollutant, id = 1:332) {
         files <- list.files(directory, full.names=TRUE)
                 
