@@ -1,23 +1,19 @@
-Solution 1 of 3:
-complete <- function(directory, id= 1:332){
-        files<-list.files(directory, full.names=TRUE)
+## Solution 1 of 3:
+complete <- function(directory, id = 1:332){
+        files <- list.files(directory, full.names = TRUE)
         
-        data<-data.frame()
-        
+        data <- data.frame()
         for(i in id){
-                x<-read.csv(files[i])
-                good<-complete.cases(x)
-                y<-x[good,]
-                z<-nrow(y)
-                obs<-cbind(i, z)
-                data<-rbind(data, obs)
+                x <- read.csv(files[i])
+                good <- complete.cases(x)
+                nobs <- c(i, nrow(x[good,]))
+                data <- rbind(data, nobs)
         }
         
-        names(data)<-c("id","nobs")
+        names(data) <- c("id", "nobs")
         return(data)
 }
-
-Solution 2 of 3:
+## Solution 2 of 3:
 complete <- function(directory, id = 1:332){
         files <- list.files(directory, full.names = TRUE)
         
@@ -32,17 +28,20 @@ complete <- function(directory, id = 1:332){
         }
         
         y <- cbind(id, nobs)
-        colnames(y)<-c("id","nobs")
+        names(y) <- c("id","nobs")
         print(y)
 }
 
-Solution 3 of 3:
+## Solution 3 of 3:
+## Solution from other people.
 complete <- function(directory, id = 1:332){
         files_list <- list.files(directory, full.names = TRUE)
+        
         dat <- data.frame()
         for(i in id){
                 dat <- rbind(dat,read.csv(files_list[i]))
         }
+        
         good <- complete.cases(dat)
         good_subset <- dat[good,][,"ID"]
         x <- as.data.frame(table(good_subset))
