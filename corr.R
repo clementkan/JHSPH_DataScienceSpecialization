@@ -1,5 +1,7 @@
-Solution 1 of 2:
-## Two functions in a script {complete() and corr()}
+## Solution 1 of 2:
+## This script checks if the number of completed cases > threshold given,
+## if "yes", its calculates the correlation between sulfate and nitrate for the monitor.
+## Returns a numeric vector containing the correlations.
 corr <- function(directory, threshold = 0){
         files <- list.files(directory, full.names = TRUE)
         
@@ -10,7 +12,7 @@ corr <- function(directory, threshold = 0){
                 y <- x[good,]
                 no.cases <- nrow(y)
                 if(no.cases > threshold){
-                        cr <- cor(y$sulfate, y$nitrate)
+                        cr <- cor(y$sulfate, y$nitrate) ## alternative: cr <- cor(x$sulfate, x$nitrate, use = "complete.obs") 
                         data <- c(data, cr)
                 }
         }
