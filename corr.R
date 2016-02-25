@@ -1,4 +1,4 @@
-## Solution 1 of 2:
+## Solution 1:
 ## This script checks if the number of completed cases > threshold given,
 ## if "yes", its calculates the correlation between sulfate and nitrate for the monitor.
 ## Returns a numeric vector containing the correlations.
@@ -17,16 +17,4 @@ corr <- function(directory, threshold = 0){
                 }
         }
         return(data)
-}
-
-Solution 2 of 2:
-## complete() was called in the corr()
-corr <- function(directory, threshold = 0) {
-        files<-list.files(directory, full.names=T)
-        
-        x<-complete()
-        if(x[,"nobs"] > threshold){
-                corr<-cor(nitrate, sulfate)
-        }
-        print(data)
 }
