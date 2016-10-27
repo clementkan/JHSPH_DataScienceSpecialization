@@ -11,24 +11,19 @@ pollutantmean <- function(directory, pollutant, id = 1:332){
         }
         data <- do.call(rbind, tmp) ## do.call() to combine tmp into a single data frame.
         
-        mean(data[,pollutant], na.rm=TRUE)
+        mean(data[,pollutant], na.rm = TRUE)
 }
 
 ## Solution 2 of 2:
 ## Slower as compare to solution 1, the data frame is recopy at each loop. 
 pollutantmean <- function(directory, pollutant, id = 1:332) {
-        files <- list.files(directory, full.names=TRUE)
-        
+        files <- list.files(directory, full.names = TRUE)
         data <- data.frame()
+        
         for(i in id){
                 data <- rbind(data, read.csv(files[i]))
         }
-        
-        if(pollutant == "sulfate"){
-                subset <- data[,"sulfate"]
-        } else {
-                subset <- data[,"nitrate"]
-        }
-        
+
+        subset <- data[,pollutant]
         mean(subset, na.rm = TRUE)
 }
