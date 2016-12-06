@@ -1,9 +1,34 @@
-## R Programming - Assignment 3
+## R Programming Assignment 3 - week 4
 ## Question 2: Finding the best hospital in a state
-
 ## Script test: source("http://d396qusza40orc.cloudfront.net/rprog%2Fscripts%2Fsubmitscript3.R")
 
-## Solution 1 of 2:
+## Solution 1 of 3:
+best <- function(state, outcome){
+  
+## Read outcome data
+  data1 <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+  data2 <- data1[,c(7,2,11,17,23)]
+  colnames(data2) <- c("State", "hospital name","heart attack", "heart failure", "pneumonia")
+
+## Check that state and outcome are valid  
+  if(!state %in% data2$State){
+          stop("invalid state")
+  }
+  
+  if(!outcome %in% c("heart attack", "heart failure", "pneumonia")){
+          stop("invalid outcome")
+  }
+
+## Return hospital name in that state with lowest 30-day death rate    
+  data3 <- data2[data2[,"State"] == state, c("hospital name", outcome)]
+  data3[,2] <- as.numeric(data3[,2])
+  
+  x <- data3[order(data3[,2], data3[,1]),]
+  z <- x[1,1]
+  return(z)
+}
+
+## Solution 2 of 3:
 best <- function(state, outcome){
         
 ## Read the outcome data
@@ -31,7 +56,7 @@ best <- function(state, outcome){
         
         names(data2) <- c("hospital name", "state", outcome)
 
-## All three variables are class factors; we need to convert the outcome variable to numeric.
+## Convert the outcome variable to numeric.
         data3 <- data2[, c(1, 2)]
         data4 <- as.numeric(as.character(data2[, 3]))
         data5 <- data.frame(data3, data4)
@@ -43,7 +68,7 @@ best <- function(state, outcome){
         return(data[1, 1])
 }
 
-## Solution 2 of 2:
+## Solution 3 of 3:
 best <- function(state, outcome) {
         readfile <- read.csv("outcome-of-care-measures.csv", colClasses="character")
         
