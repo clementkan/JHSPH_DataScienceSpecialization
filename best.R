@@ -2,7 +2,7 @@
 ## Question 2: Finding the best hospital in a state
 ## Script test: source("http://d396qusza40orc.cloudfront.net/rprog%2Fscripts%2Fsubmitscript3.R")
 
-## Solution 1 of 3:
+## Solution 1 of 4:
 best <- function(state, outcome){
   
 ## Read outcome data
@@ -28,7 +28,29 @@ best <- function(state, outcome){
   return(z)
 }
 
-## Solution 2 of 3:
+## Solution 2 of 4:
+best <- function(state, outcome){
+  data1 <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+
+  if(outcome == "heart attack"){
+    data2 <- data1[data1[,7] == state, c(2, 11)]
+  } else if(outcome == "heart failure"){
+    data2 <- data1[data1[,7] == state, c(2, 17)]
+  } else if(outcome == "pneumonia"){
+    data2 <- data1[data1[,7] == state, c(2, 23)]
+  } else (stop("invalid outcome"))
+  
+  data2[,2] <- as.numeric(data2[,2])
+  
+  x <- data2[order(data2[,2], data2[,1]),]
+  z <- x[1,1]
+  
+  if(!is.na(z)){
+    print(z)
+  } else {stop("invalid state")}
+}
+
+## Solution 3 of 4:
 best <- function(state, outcome){
         
 ## Read the outcome data
@@ -68,7 +90,7 @@ best <- function(state, outcome){
         return(data[1, 1])
 }
 
-## Solution 3 of 3:
+## Solution 4 of 4:
 best <- function(state, outcome) {
         readfile <- read.csv("outcome-of-care-measures.csv", colClasses="character")
         
