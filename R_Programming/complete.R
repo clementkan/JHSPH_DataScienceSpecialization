@@ -1,5 +1,15 @@
-## R Programming (week 2): Assignment 1, Air Pollution
+## R Programming Assignment 1 Answers - week 2: Air Pollution
+
+## Question 2: pollutantmean.R
+
+## Write a function that reads a directory full of files and reports the number of completely observed cases in each data file. 
+## The function should return a data frame where the first column is the name of the file and the second column is the number 
+## of complete cases.
+
+complete <- function(directory, id = 1:332)
+
 ## Solution 1 of 2:
+
 complete <- function(directory, id = 1:332) {
         files <- list.files(directory, full.names = TRUE)
         
@@ -18,6 +28,7 @@ complete <- function(directory, id = 1:332) {
 
 ## Solution 2 of 2:
 ## Solution from other people.
+
 complete <- function(directory, id = 1:332){
         files_list <- list.files(directory, full.names = TRUE)
         
