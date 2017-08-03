@@ -1,18 +1,15 @@
 corr <- function(directory, threshold = 0){
         files_full <- list.files(directory, full.names = TRUE)
         
-        output <- numeric()
+        data <- numeric()
         for(i in seq_along(files_full)){
-                data1 <- read.csv(files_full[i])
-                data2 <- na.omit(data1)
-                data3 <- nrow(na.omit(data1))
-               
-                if(data3 > threshold){
-                        cr <- cor(data2$sulfate, data2$nitrate)
-                        output <- c(output, cr)
+                x <- read.csv(files_full[i])
+                y <- x[complete.cases(x), ]
+                
+                if(nrow(y) > threshold){
+                        cr <- cor(y$sulfate, y$nitrate)
+                        data <- c(data, cr)
                 }
         }
-        
-        return(round(output, 5))
-            
+        return(data)
 }
