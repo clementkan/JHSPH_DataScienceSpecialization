@@ -1,5 +1,5 @@
 # Solution 1 of 2: 
-# This solution is a better approach to create a dataframe compared to solution 2. 
+# This solution is a better approach to create a dataframe than solution 2. 
 # Refer to R Programming Practice Assignment for more details on using this approach. 
 
 pollutantmean <- function(directory, pollutant, id = 1:332){
