@@ -1,17 +1,15 @@
 complete <- function(directory, id = 1:332){
         files_full <- list.files(directory, full.names = TRUE)
         
-        output <- data.frame()
+        data <- data.frame()
         for(i in id){
-                data1 <- read.csv(files_full[i])
-                data2 <- na.omit(data1)
-                data3 <- cbind(i, nrow(data2))
+                x <- read.csv(files_full[i])
+                y <- x[complete.cases(x), ]
+                z <- c(i, nrow(y)) 
                 
-                output <- rbind(output, data3)
+                data <- rbind(data, z)
         }
         
-        colnames(output) <- c("id", "nobs")
-        rownames(output) <- seq_along(id)
-        
-        return(output)
+        names(data) <- c("id", "nobs")
+        data
 }
