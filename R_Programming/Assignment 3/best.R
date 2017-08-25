@@ -14,7 +14,7 @@ best <- function(state, outcome){
                 stop("invalid outcome")
         }
         
-        ## Return hospital name in that state with lowest 30-day death rate
+        ## Return the best hospital in that state
         data3 <- data2[data2$State == state, c("Hospital.name", outcome)]
         
         data3[data3[,2] == "Not Available",] <- NA
